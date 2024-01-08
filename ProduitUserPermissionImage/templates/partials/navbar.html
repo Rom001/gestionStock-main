@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand font-weight-bold" href="{% url 'home' %}"><i class="fas fa-file"></i> GestionStock</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+        </li>
+        {% if user.is_authenticated %}          
+          <a class="nav-link" href="{% url 'produit_list' %} "><i class=""></i> Product </a>
+          <a class="nav-link" href=""><i class=""></i> Opérations </a>
+          <a class="nav-link" href=""><i class=""></i> Profil </a>
+          {% if request.user.is_superuser %}
+            <a class="nav-link" href="{% url 'user_list' %}"><i class=""></i> Admin </a>
+          {% endif %}
+          
+
+        {% endif %}
+        
+      </ul>
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="btn text-white m-2"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        
+        {% else %}
+        <a href="{% url 'login' %}" class="btn text-white m-2"><i class="fas fa-user-tie"></i> Log In</a>
+       
+        <a href="{% url 'signup' %}" class="btn text-white m-2"> <i class="fas fa-sign-in-alt"></i> Sign Up</a>
+        {% endif %}
+      
+    </div>
+  </nav>
+<div class="container my-bg">
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+  </div>
+{% endfor %}
+{% endif %}
