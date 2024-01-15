@@ -9,7 +9,7 @@ from django.conf.urls.static import static  # new
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('produits/', include('inventaire.urls')),  # Inclure les URL de l'application de gestion de produits
+    path('gestion/', include('inventaire.urls')),  # Inclure les URL de l'application de gestion de produits
     path('users/', include('users.urls')),
     path("accounts/", include("django.contrib.auth.urls")), 
 ]

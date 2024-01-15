@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<head>
+    <title>Produits de {{ categorie.nom }}</title>
+</head>
+<body>
+    <h1>Produits de la catégorie : {{ categorie.nom }}</h1>
+    <ul>
+        {% for produit in produits %}
+            <li>{{ produit.nom }} - Quantité en stock: {{ produit.quantite_stock }}</li>
+        {% empty %}
+            <p>Aucun produit trouvé dans cette catégorie.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

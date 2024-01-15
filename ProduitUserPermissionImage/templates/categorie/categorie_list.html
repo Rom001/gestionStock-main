@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Liste des Catégories</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .category-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .category-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        flex-basis: calc(33.333% - 20px);
+        /* largeur de base pour chaque élément */
+        max-width: calc(33.333% - 20px);
+        /* largeur maximale pour chaque élément */
+        box-sizing: border-box;
+        /* inclut padding et border dans la largeur de l'élément */
+    }
+
+
+    .category-item h2 {
+        margin-top: 0;
+    }
+
+    .category-item p {
+        color: #666;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Catégories de Produits</h1>
+        <div class="category-list">
+            {% for categorie in categorie %}
+                <div  class="category-item">
+                    <a href="{% url 'produits_par_categorie' categorie.pk %}">
+                    <h2>{{ categorie.nom }}</h2>
+                    <p>{{ categorie.description|default:"Pas de description disponible." }}</p>
+                    <a href="{% url 'categorie_edit' categorie.pk %}" class="btn btn-sm btn-outline-secondary">Modifier</a>
+                    <a href="{% url 'categorie_delete' categorie.pk %}" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                    </a>
+                </div>
+            {% empty %}
+                <p>Aucune catégorie disponible.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+{% endblock %}

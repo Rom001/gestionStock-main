@@ -1,0 +1,5 @@
+<h2>Êtes-vous sûr de vouloir supprimer "{{ object }}"", cela supprimera touts les produit associée?</h2>
+<form method="post">{% csrf_token %}
+  <button type="submit">Supprimer</button>
+  <a href="{% url 'categorie_list' %}">Annuler</a>
+</form>

@@ -1,8 +1,8 @@
 {% block content %}
-  <h2>Ajouter une nouvelle catégorie</h2>
+  <h2>Ajouter/modifier une catégorie</h2>
   <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Créer</button>
+      {{ categorie_form.as_p }}
+      <button type="submit">Sauvegarder</button>
   </form>
 {% endblock %}
