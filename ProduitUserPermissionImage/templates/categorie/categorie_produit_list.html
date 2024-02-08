@@ -1,19 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
+
 <head>
-    <title>Produits de {{ categorie.nom }}</title>
+    <title>Produits de la catégorie : {{ categorie.nom }}</title>
+    <style>
+        /* Ajoutez des styles spécifiques pour organiser les produits et leurs images */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;  /* Espace entre les produits */
+        }
+
+        .product {
+            width: calc(33.33% - 20px);  /* Calcul pour obtenir trois produits par ligne avec l'espace entre eux */
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;  /* Assurez-vous que les images ne dépassent pas la largeur de leur conteneur */
+        }
+    </style>
 </head>
 <body>
     <h1>Produits de la catégorie : {{ categorie.nom }}</h1>
-    <ul>
+    <div class="products-container">
         {% for produit in produits %}
-            <li>{{ produit.nom }} - Quantité en stock: {{ produit.quantite_stock }}</li>
+            <div class="product">
+                <img src="{{ produit.image.image.url }}" alt="{{ produit.nom }}" style="max-width: 50px; max-height: 50px;">
+                <h3>{{ produit.nom }}</h3>
+                <p>Quantité en stock : {{ produit.quantite_stock }}</p>
+                <!-- Ajoutez d'autres informations sur le produit selon vos besoins -->
+            </div>
         {% empty %}
             <p>Aucun produit trouvé dans cette catégorie.</p>
         {% endfor %}
-    </ul>
+    </div>
+    <br>
 </body>
 </html>
 {% endblock %}

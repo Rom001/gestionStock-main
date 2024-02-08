@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('inventaire', '0002_sortiestock_entreestock'),
+        ('produits', '0002_sortiestock_entreestock'),
     ]
 
     operations = [
@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(upload_to='images/')),
-                ('produit', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='inventaire.produit')),
+                ('produit', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='produits.produit')),
             ],
         ),
     ]

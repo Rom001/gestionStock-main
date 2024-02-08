@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('inventaire', '0001_initial'),
+        ('produits', '0001_initial'),
     ]
 
     operations = [
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantite', models.PositiveIntegerField()),
                 ('date', models.DateTimeField(auto_now_add=True)),
-                ('produit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='inventaire.produit')),
+                ('produit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='produits.produit')),
             ],
         ),
         migrations.CreateModel(
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantite', models.PositiveIntegerField()),
                 ('date', models.DateTimeField(auto_now_add=True)),
-                ('produit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='inventaire.produit')),
+                ('produit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='produits.produit')),
             ],
         ),
     ]

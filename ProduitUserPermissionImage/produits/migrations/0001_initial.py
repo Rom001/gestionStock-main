@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('quantite_stock', models.IntegerField()),
                 ('quantite_alerte', models.IntegerField()),
                 ('stock_securite', models.IntegerField()),
-                ('categorie', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='produits', to='inventaire.categorie')),
+                ('categorie', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='produits', to='produits.categorie')),
             ],
         ),
     ]
